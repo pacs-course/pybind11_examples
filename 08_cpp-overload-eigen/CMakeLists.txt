@@ -1,14 +1,13 @@
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CPP_COMPILER g++)
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0.0)
 project(example)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+set(CMAKE_CXX_EXTENSIONS Off)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+find_package(Eigen3 REQUIRED HINTS $ENV{mkEigenPrefix})
+include_directories(SYSTEM ${EIGEN3_INCLUDE_DIRS})
 
-set (CMAKE_CXX_STANDARD 14)
+find_package(pybind11 REQUIRED HINTS $ENV{mkPybind11Prefix})
+include_directories(SYSTEM ${pybind11_INCLUDE_DIRS})
 
-find_package( PkgConfig )
-pkg_check_modules( EIGEN3 REQUIRED eigen3 )
-include_directories( ${EIGEN3_INCLUDE_DIRS} )
-
-add_subdirectory(pybind11)
 pybind11_add_module(example example.cpp)

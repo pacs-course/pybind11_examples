@@ -1,11 +1,9 @@
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CPP_COMPILER g++)
-cmake_minimum_required(VERSION 3.18)
-
+cmake_minimum_required(VERSION 3.0.0)
 project(mymodule)
-
-set(CMAKE_CXX_STANDARD 14)
-
-find_package(pybind11 REQUIRED CONFIG)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+set(CMAKE_CXX_EXTENSIONS Off)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+find_package(pybind11 REQUIRED HINTS $ENV{mkPybind11Prefix})
+include_directories(SYSTEM ${pybind11_INCLUDE_DIRS})
 pybind11_add_module(mymodule code_and_wrapper.cpp)
