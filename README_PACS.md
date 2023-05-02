@@ -21,3 +21,5 @@ Or, have installed the pybind11 clone in the `Extra` section:
  
 ```
 The last line is needed for the examples that uses cmake.
+
+Read the `README.md` file to have details on how to compile the examples. You need a recent version of `cmake`.
